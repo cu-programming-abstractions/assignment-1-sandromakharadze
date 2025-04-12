@@ -5,15 +5,35 @@
  * TODO: Edit these comments to leave a puzzle for your section leader to solve!
  */
 #include "OnlyConnect.h"
+#include "strlib.h"
 using namespace std;
 
 string onlyConnectize(string phrase) {
-    /* TODO: The next few lines just exist to make sure you don't get compiler
-     * warning messages when this function isn't implemented. Delete this
-     * comment and the next few lines, then implement this function.
-     */
-    (void) phrase;
-    return "";
+
+    const string vowel_cap("AEIOU");
+
+    if(phrase.length() == 0){
+        return "";
+    }
+
+    if (phrase.length() == 1){    
+        if(isalpha(phrase[0]) == 0){
+            return "";
+        }
+        else{
+            char phrase_char = phrase [0];
+            char phrase_char_cap = toupper(phrase_char);
+            if(vowel_cap.find(phrase_char_cap) != string::npos){
+                return "";
+            }
+            else{
+                return charToString(phrase_char_cap);
+            }
+        }
+    }
+    else{
+        return onlyConnectize(charToString(phrase[0])) + onlyConnectize(phrase.substr(1, phrase.length()-1));
+    }
 }
 
 
