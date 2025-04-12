@@ -21,3 +21,4 @@
 std::string onlyConnectize(std::string phrase);
 
 #endif
+
